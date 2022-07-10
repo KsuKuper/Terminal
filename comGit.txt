@@ -1,0 +1,160 @@
+Terminal/Bash/Git
+
+1. Basics
+
+1.1	/ (Forward Slash)	top level directory
+1.2	. (Single Period)	current directory
+1.3	.. (Double Period)	parent directory
+1.4	~ (Tilde)		home directory
+1.5	sudo [command]		run command with the security privileges of the super user
+1.6	nano [file]		opens the Terminal editor
+1.7	open [file]		opens a file
+1.8	[command] -h		get help about a command
+1.9	man [command]		show the help manual of the command
+
+2. Change Directory
+
+2.1	cd			home directory/ change directory
+2.2	cd [folder]		change directory, e.g. cd Documents
+2.3	cd ~			home directory
+2.4	cd/			root of the drive
+2.5	cd -			previous directory or folder you last browsed
+2.6	pwd			show your working directory
+2.7	cd..			move up to the parent directory
+2.8	cd../..			move up two levels
+
+3. List Directory Contents
+
+3.1	ls			display the name of files and subdirectories in the directory
+3.2	ls -C			force multi-column output of the listing
+3.3	ls -a			list all entries including those with .(period) and ..(double period)
+3.4	ls -1			output the list of files in one entry per line format
+3.5	ls -F			display a / (slash) immediately after each path that is a directory, * (asterisk) after executable programs or scripts, and @ after a symbolic link
+3.6	ls -S			sort files or entries by size
+3.7	ls -l			list in a long format. Includes file mode, owner and group name, date and time file was modified, pathname, and more
+3.8	ls -l /			list of the file system from root with symbolic links
+3.9	ls -lt			list the files sorted by time modified (most recent first)
+3.10	ls -lh			long listing with human readable file sizes in KB, MB, or GB
+3.11	ls -lo			list the file names with size, owner, and flags
+3.12	ls -la			list detailed directory contents, including hidden files
+
+4. File Size and Disk Space
+
+4.1	du			list usage for each subdirectory and its contents
+4.2	du -sh [folder]		human readable output of all files in a directory
+4.3	du -s			display an entry for each specified file
+4.4	du -sk* | sort -nr	list files and folders, totaling the size including the subfolders. Replace sk* with sm* to list directories in MB
+4.5	df -h			calculate your system's free disk space
+4.6	df -H			calculate free disk space in powers of 1,000 (as opposed to 1,024)
+
+5. File and Directory Management
+
+5.1	mkdir <dir>			create new folder named <dir>
+5.2	mkdir -p <dir>/<dir>		create nested folders
+5.3	mkdir <dir1> <dir2> <dir3>	create several folders at once
+5.4	mkdir "<dir>"			create a folder with a space in the filename
+5.5	rmdir <dir>			delete a folder (only works on empty folders)
+5.6	rm -R <dir>			delete a folder and its contents
+5.7	touch <file>			create a new file without any extension
+5.8	cp <file> <dir>			copy a file to the folder
+5.9	cp <file> <newfile>		copy a file to the current folder
+5.10	cp <file>~/<dir>/<newfile>	copy a file to the folder and rename the copied file
+5.11	cp -R <dir> <"new dir">		copy a folder to a new folder with spaces in the filename
+5.12	cp -i <file><dir>		prompts you before copying a file with a warning overwrite message
+5.13	cp <file1> <file2> <file3>/Users/<dir>	copy multiple files to a folder
+5.14	ditto -V [folder path][new folder]	copy the contents of a folder to new folder. In here "-V" print a line of status for every file copied
+5.15	rm <file>			delete a file (This deletes the file permanently; use with caution.)
+5.16	rm -i <file>			delete a file only when you give confirmation
+5.17	rm -f <file>			Force removal without confirmation
+5.18	rm <file1> <file2> <file3>	delete multiple files without any confirmation
+5.19	mv <file> <newfilename>		move/rename
+5.20	mv <file> <dir>			move a file to the folder, possibly by overwriting an existing file
+5.21	mv -i <file> <dir>		optional -i flag to warn you before overwriting the file
+5.22	mv *.png ~/<dir>		move all PNG files from current folder to a different folder
+
+6. Command History
+
+6.1	Ctrl + R			search through previously used commands
+6.2	history n			shows the previous commands you've typed. Add a number to limit to the last n items
+6.3	![value]			execute the last command typed that starts with a value
+6.4	!!				execute the last command typed
+
+7. Permissions
+
+7.1	ls -ld				display the default permission for a home directory
+7.2	ls -ld/<dir>			display the read, write, and access permission of a particular folder
+7.3	chmod 755 <file>		change the permission of a file to 755
+7.4	chmod -R 600 <dir>		change the permission of a folder (and its contents) to 600
+7.5	chown <user>:<group> <file>	change the ownership of a file to user and group. Add -R to include folder contents
+
+8. Processes
+
+8.1	ps -ax				output currently running processes. Here, a shows processes from all users and x shows processes that are not connected with the Terminal
+8.2	ps -aux				shows all the processes with %cpu, %mem, page in, PID, and command
+8.3	top				display live information about currently running processes
+8.4	top -ocpu -s 5			display processes sorted by CPU usage, updating every 5 seconds
+8.5	top -o rsize			sort top by memory usage
+8.6	kill PID			quit process with ID <PID>. You'll see PID as a column in the 
+Activity Monitor
+8.7	ps -ax | grep <appname>		find a process by name or PID
+
+9. Network
+
+9.1	ping <host>			ping host and display status
+9.2	whois <domain>			output whois info for a domain
+9.3	curl -O <url/to/file>		download file via HTTP, HTTPS, or FTP
+9.4	ssh <username>@<host>		establish SSH connection to <host> with user <username>
+9.5	scp <file><user>@<host>:/remote/path	copy <file> to a remote <host>
+9.6	arp -a				view a list of all devices on your local network. It will show you the IP and MAC address of all the devices
+9.7	ifconfig en0			view your device IP and MAC address
+9.8	traceroute [hostname]		identify the path and the hops traversed by the packets from your device to the destination address
+
+10. Homebrew
+
+10.1	brew doctor			check brew for potential problems
+10.2	brew help			list of useful homebrew formula and cask commands
+10.3	brew install <formula>|<cask>	install a formula or cask
+10.4	brew uninstall <formula>|cask>	uninstall a formula or cask
+10.5	brew list --formula		list only installed formulas
+10.6	brew list --cask		list only installed cask
+10.7	brew deps <formula>|<cask>	list all the dependencies of a formula or cask
+10.8	brew search text|/regex/	search formula or cask through regex
+10.9	brew upgrade <formula>|<cask>	upgrade the formula or cask
+10.10	brew outdated <formula>|<cask>	search for outdated formula or cask
+10.11	brew outdated --formula		search for outdated formula
+10.12	brew outdated --cask		search for outdated cask
+10.13	brew pin [installed_formula]	pin a formula from getting upgraded
+10.14	brew unpin [installed_formula]	unpin to upgrade a package
+10.15	brew cleanup			remove stale lock files and outdated packages for all formula and casks.
+
+11. Environment Variable or Path
+
+11.1	printenv			display a list of currently set environment variables. Also tells you which shell you're using
+11.2	$echo				tells the terminal to print something and show it to you
+11.3	echo $PATH			check the value of the PATH variable which storea a list of directories with executable files
+11.4	echo $PATH >path.txt		export the path directory to a text file
+11.5	export PATH=$PATH:absolute/path to/program/	execute a program via terminal only in your current session. If you use a program regularly, add the path to shell configuration file.
+
+12. Search
+
+12.1	find <dir> -name <"file">	find all files named <file> inside <dir>. Use wildcards (*) to search for parts of filenames
+12.2	grep "<text>" <file>		output all occurrences of <text> inside <file> (add -i for case insensitivity)
+12.3	grep -rl "<text>" <dir>		search for all files containing <text> inside <dir>
+
+13. Output
+
+13.1	cat <file>			output the content of <file>
+13.2	less <file>			output the contents of <file> using the less command that supports pagination and more
+13.3	head <file>			output the first 10 lines of <file>
+13.4	<cmd> > > <file>		appends the output of <cmd> to <file>
+13.5	<cmd> > <file>			direct the output of <cmd> into <file>
+13.6	<cmd1> | <cmd2>			direct the output of <cmd1> to <cmd2>
+
+14. Information
+
+14.1	cal 			display a calendar (for calendar software use Google Calendar)
+14.2	date 			display today's date
+14.3	whoami 			display your login name
+14.4	quota 			view your quota
+14.5	hostname 		display the computer's name
+14.6	w 			who else is using the computer
